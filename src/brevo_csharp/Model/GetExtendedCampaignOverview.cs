@@ -148,7 +148,7 @@ namespace brevo_csharp.Model
         /// <param name="recurring">FOR TRIGGER ONLY ! Type of trigger campaign.recurring &#x3D; false means contact can receive the same Trigger campaign only once, &amp; recurring &#x3D; true means contact can receive the same Trigger campaign several times.</param>
         /// <param name="sentDate">Sent UTC date-time of the campaign (YYYY-MM-DDTHH:mm:ss.SSSZ). Only available if &#39;status&#39; of the campaign is &#39;sent&#39;.</param>
         /// <param name="returnBounce">Total number of non-delivered campaigns for a particular campaign id..</param>
-        public GetExtendedCampaignOverview(long? id = default(long?), string name = default(string), string subject = default(string), string previewText = default(string), TypeEnum type = default(TypeEnum), StatusEnum status = default(StatusEnum), string scheduledAt = default(string), bool? abTesting = default(bool?), string subjectA = default(string), string subjectB = default(string), int? splitRule = default(int?), string winnerCriteria = default(string), int? winnerDelay = default(int?), bool? sendAtBestTime = default(bool?), string utmCampaignValue = default(string), string utmSource = default(string), string utmMedium = default(string), int? utmID = default(int?), bool? testSent = default(bool?), string header = default(string), string footer = default(string), GetExtendedCampaignOverviewSender sender = default(GetExtendedCampaignOverviewSender), string replyTo = default(string), string toField = default(string), string htmlContent = default(string), string shareLink = default(string), string tag = default(string), string createdAt = default(string), string modifiedAt = default(string), bool? inlineImageActivation = default(bool?), bool? mirrorActive = default(bool?), bool? recurring = default(bool?), string sentDate = default(string), long? returnBounce = default(long?))
+        public GetExtendedCampaignOverview(long? id = default(long?), string name = default(string), string subject = default(string), string previewText = default(string), TypeEnum type = default(TypeEnum), StatusEnum status = default(StatusEnum), string scheduledAt = default(string), bool? abTesting = default(bool?), string subjectA = default(string), string subjectB = default(string), int? splitRule = default(int?), string winnerCriteria = default(string), int? winnerDelay = default(int?), bool? sendAtBestTime = default(bool?), string utmCampaignValue = default(string), string utmSource = default(string), string utmMedium = default(string), int? utmID = default(int?), string utmId = default(string), bool? testSent = default(bool?), string header = default(string), string footer = default(string), GetExtendedCampaignOverviewSender sender = default(GetExtendedCampaignOverviewSender), string replyTo = default(string), string toField = default(string), string htmlContent = default(string), string shareLink = default(string), string tag = default(string), string createdAt = default(string), string modifiedAt = default(string), bool? inlineImageActivation = default(bool?), bool? mirrorActive = default(bool?), bool? recurring = default(bool?), string sentDate = default(string), long? returnBounce = default(long?))
         {
             // to ensure "id" is required (not null)
             if (id == null)
@@ -272,6 +272,7 @@ namespace brevo_csharp.Model
             this.UtmSource = utmSource;
             this.UtmMedium = utmMedium;
             this.UtmID = utmID;
+            this.UtmId = utmId;
             this.ToField = toField;
             this.ShareLink = shareLink;
             this.Tag = tag;
@@ -395,6 +396,13 @@ namespace brevo_csharp.Model
         /// <value>utm id</value>
         [DataMember(Name="utmID", EmitDefaultValue=false)]
         public int? UtmID { get; set; }
+
+        /// <summary>
+        /// The utm_id value applied to the campaign&#39;s tracking links, returned verbatim as a string. Falls back to your account&#39;s global UTM settings when no custom value was set on the campaign. Only returned when UTM tracking is enabled on the campaign and a value is set at one of these levels. Preferred field for new consumers — covers both numeric IDs and customer-supplied non-numeric strings.
+        /// </summary>
+        /// <value>The utm_id value applied to the campaign&#39;s tracking links, returned verbatim as a string. Falls back to your account&#39;s global UTM settings when no custom value was set on the campaign. Only returned when UTM tracking is enabled on the campaign and a value is set at one of these levels. Preferred field for new consumers — covers both numeric IDs and customer-supplied non-numeric strings.</value>
+        [DataMember(Name="utmId", EmitDefaultValue=false)]
+        public string UtmId { get; set; }
 
         /// <summary>
         /// Retrieved the status of test email sending. (true&#x3D;Test email has been sent  false&#x3D;Test email has not been sent)
@@ -533,6 +541,7 @@ namespace brevo_csharp.Model
             sb.Append("  UtmSource: ").Append(UtmSource).Append("\n");
             sb.Append("  UtmMedium: ").Append(UtmMedium).Append("\n");
             sb.Append("  UtmID: ").Append(UtmID).Append("\n");
+            sb.Append("  UtmId: ").Append(UtmId).Append("\n");
             sb.Append("  TestSent: ").Append(TestSent).Append("\n");
             sb.Append("  Header: ").Append(Header).Append("\n");
             sb.Append("  Footer: ").Append(Footer).Append("\n");
@@ -672,7 +681,12 @@ namespace brevo_csharp.Model
                     this.UtmID == input.UtmID ||
                     (this.UtmID != null &&
                     this.UtmID.Equals(input.UtmID))
-                ) && 
+                ) &&
+                (
+                    this.UtmId == input.UtmId ||
+                    (this.UtmId != null &&
+                    this.UtmId.Equals(input.UtmId))
+                ) &&
                 (
                     this.TestSent == input.TestSent ||
                     (this.TestSent != null &&
@@ -800,6 +814,8 @@ namespace brevo_csharp.Model
                     hashCode = hashCode * 59 + this.UtmMedium.GetHashCode();
                 if (this.UtmID != null)
                     hashCode = hashCode * 59 + this.UtmID.GetHashCode();
+                if (this.UtmId != null)
+                    hashCode = hashCode * 59 + this.UtmId.GetHashCode();
                 if (this.TestSent != null)
                     hashCode = hashCode * 59 + this.TestSent.GetHashCode();
                 if (this.Header != null)

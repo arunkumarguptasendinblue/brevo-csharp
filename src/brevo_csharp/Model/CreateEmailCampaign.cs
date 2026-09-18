@@ -95,7 +95,7 @@ namespace brevo_csharp.Model
         /// <param name="unsubscriptionPageId">Enter an unsubscription page id. The page id is a 24 digit alphanumeric id that can be found in the URL when editing the page. If not entered, then the default unsubscription page will be used..</param>
         /// <param name="updateFormId">Mandatory if templateId is used containing the {{ update_profile }} tag. Enter an update profile form id. The form id is a 24 digit alphanumeric id that can be found in the URL when editing the form. If not entered, then the default update profile form will be used..</param>
         /// <param name="emailExpirationDate">emailExpirationDate.</param>
-        public CreateEmailCampaign(string tag = default(string), CreateEmailCampaignSender sender = default(CreateEmailCampaignSender), string name = default(string), string htmlContent = default(string), string htmlUrl = default(string), long? templateId = default(long?), string scheduledAt = default(string), string subject = default(string), string previewText = default(string), string replyTo = default(string), string toField = default(string), CreateEmailCampaignRecipients recipients = default(CreateEmailCampaignRecipients), string attachmentUrl = default(string), bool? inlineImageActivation = false, bool? mirrorActive = default(bool?), string footer = default(string), string header = default(string), string utmCampaign = default(string), Object _params = default(Object), bool? sendAtBestTime = false, bool? abTesting = false, string subjectA = default(string), string subjectB = default(string), long? splitRule = default(long?), WinnerCriteriaEnum? winnerCriteria = default(WinnerCriteriaEnum?), long? winnerDelay = default(long?), bool? ipWarmupEnable = false, long? initialQuota = default(long?), long? increaseRate = default(long?), string unsubscriptionPageId = default(string), string updateFormId = default(string), CreateEmailCampaignEmailExpirationDate emailExpirationDate = default(CreateEmailCampaignEmailExpirationDate))
+        public CreateEmailCampaign(string tag = default(string), CreateEmailCampaignSender sender = default(CreateEmailCampaignSender), string name = default(string), string htmlContent = default(string), string htmlUrl = default(string), long? templateId = default(long?), string scheduledAt = default(string), string subject = default(string), string previewText = default(string), string replyTo = default(string), string toField = default(string), CreateEmailCampaignRecipients recipients = default(CreateEmailCampaignRecipients), string attachmentUrl = default(string), bool? inlineImageActivation = false, bool? mirrorActive = default(bool?), string footer = default(string), string header = default(string), string utmCampaign = default(string), string utmSource = default(string), string utmMedium = default(string), string utmId = default(string), Object _params = default(Object), bool? sendAtBestTime = false, bool? abTesting = false, string subjectA = default(string), string subjectB = default(string), long? splitRule = default(long?), WinnerCriteriaEnum? winnerCriteria = default(WinnerCriteriaEnum?), long? winnerDelay = default(long?), bool? ipWarmupEnable = false, long? initialQuota = default(long?), long? increaseRate = default(long?), string unsubscriptionPageId = default(string), string updateFormId = default(string), CreateEmailCampaignEmailExpirationDate emailExpirationDate = default(CreateEmailCampaignEmailExpirationDate))
         {
             // to ensure "sender" is required (not null)
             if (sender == null)
@@ -139,6 +139,9 @@ namespace brevo_csharp.Model
             this.Footer = footer;
             this.Header = header;
             this.UtmCampaign = utmCampaign;
+            this.UtmSource = utmSource;
+            this.UtmMedium = utmMedium;
+            this.UtmId = utmId;
             this.Params = _params;
             // use default value if no "sendAtBestTime" provided
             if (sendAtBestTime == null)
@@ -304,6 +307,27 @@ namespace brevo_csharp.Model
         public string UtmCampaign { get; set; }
 
         /// <summary>
+        /// Customize the utm_source value. When omitted or empty, the utm_source entry from the account&#39;s global utm_settings is used if set; otherwise the account default (&#x60;brevo&#x60; or &#x60;sendinblue&#x60;) is used.
+        /// </summary>
+        /// <value>Customize the utm_source value. When omitted or empty, the utm_source entry from the account&#39;s global utm_settings is used if set; otherwise the account default (&#x60;brevo&#x60; or &#x60;sendinblue&#x60;) is used.</value>
+        [DataMember(Name="utmSource", EmitDefaultValue=false)]
+        public string UtmSource { get; set; }
+
+        /// <summary>
+        /// Customize the utm_medium value. When omitted or empty, the utm_medium entry from the account&#39;s global utm_settings is used if set; otherwise the default &#x60;email&#x60; is used.
+        /// </summary>
+        /// <value>Customize the utm_medium value. When omitted or empty, the utm_medium entry from the account&#39;s global utm_settings is used if set; otherwise the default &#x60;email&#x60; is used.</value>
+        [DataMember(Name="utmMedium", EmitDefaultValue=false)]
+        public string UtmMedium { get; set; }
+
+        /// <summary>
+        /// Customize the utm_id value. Appears on outgoing tracking links alongside utm_campaign. When omitted or empty, the utm_id entry from the account&#39;s global utm_settings is used if enabled; otherwise no utm_id parameter is emitted.
+        /// </summary>
+        /// <value>Customize the utm_id value. Appears on outgoing tracking links alongside utm_campaign. When omitted or empty, the utm_id entry from the account&#39;s global utm_settings is used if enabled; otherwise no utm_id parameter is emitted.</value>
+        [DataMember(Name="utmId", EmitDefaultValue=false)]
+        public string UtmId { get; set; }
+
+        /// <summary>
         /// Pass the set of attributes to customize the type classic campaign. For example, {\&quot;FNAME\&quot;:\&quot;Joe\&quot;, \&quot;LNAME\&quot;:\&quot;Doe\&quot;}. Only available if &#39;type&#39; is &#39;classic&#39;. It&#39;s considered only if campaign is in New Template Language format. The New Template Language is dependent on the values of &#39;subject&#39;, &#39;htmlContent/htmlUrl&#39;, &#39;sender.name&#39; &amp; &#39;toField&#39;
         /// </summary>
         /// <value>Pass the set of attributes to customize the type classic campaign. For example, {\&quot;FNAME\&quot;:\&quot;Joe\&quot;, \&quot;LNAME\&quot;:\&quot;Doe\&quot;}. Only available if &#39;type&#39; is &#39;classic&#39;. It&#39;s considered only if campaign is in New Template Language format. The New Template Language is dependent on the values of &#39;subject&#39;, &#39;htmlContent/htmlUrl&#39;, &#39;sender.name&#39; &amp; &#39;toField&#39;</value>
@@ -420,6 +444,9 @@ namespace brevo_csharp.Model
             sb.Append("  Footer: ").Append(Footer).Append("\n");
             sb.Append("  Header: ").Append(Header).Append("\n");
             sb.Append("  UtmCampaign: ").Append(UtmCampaign).Append("\n");
+            sb.Append("  UtmSource: ").Append(UtmSource).Append("\n");
+            sb.Append("  UtmMedium: ").Append(UtmMedium).Append("\n");
+            sb.Append("  UtmId: ").Append(UtmId).Append("\n");
             sb.Append("  Params: ").Append(Params).Append("\n");
             sb.Append("  SendAtBestTime: ").Append(SendAtBestTime).Append("\n");
             sb.Append("  AbTesting: ").Append(AbTesting).Append("\n");
@@ -557,7 +584,22 @@ namespace brevo_csharp.Model
                     this.UtmCampaign == input.UtmCampaign ||
                     (this.UtmCampaign != null &&
                     this.UtmCampaign.Equals(input.UtmCampaign))
-                ) && 
+                ) &&
+                (
+                    this.UtmSource == input.UtmSource ||
+                    (this.UtmSource != null &&
+                    this.UtmSource.Equals(input.UtmSource))
+                ) &&
+                (
+                    this.UtmMedium == input.UtmMedium ||
+                    (this.UtmMedium != null &&
+                    this.UtmMedium.Equals(input.UtmMedium))
+                ) &&
+                (
+                    this.UtmId == input.UtmId ||
+                    (this.UtmId != null &&
+                    this.UtmId.Equals(input.UtmId))
+                ) &&
                 (
                     this.Params == input.Params ||
                     (this.Params != null &&
@@ -675,6 +717,12 @@ namespace brevo_csharp.Model
                     hashCode = hashCode * 59 + this.Header.GetHashCode();
                 if (this.UtmCampaign != null)
                     hashCode = hashCode * 59 + this.UtmCampaign.GetHashCode();
+                if (this.UtmSource != null)
+                    hashCode = hashCode * 59 + this.UtmSource.GetHashCode();
+                if (this.UtmMedium != null)
+                    hashCode = hashCode * 59 + this.UtmMedium.GetHashCode();
+                if (this.UtmId != null)
+                    hashCode = hashCode * 59 + this.UtmId.GetHashCode();
                 if (this.Params != null)
                     hashCode = hashCode * 59 + this.Params.GetHashCode();
                 if (this.SendAtBestTime != null)
