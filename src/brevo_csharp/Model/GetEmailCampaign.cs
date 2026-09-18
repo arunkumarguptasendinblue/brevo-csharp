@@ -128,10 +128,10 @@ namespace brevo_csharp.Model
         /// <param name="winnerCriteria">Criteria for the winning version. Only available if &#x60;abTesting&#x60; flag of the campaign is &#x60;true&#x60;.</param>
         /// <param name="winnerDelay">The duration of the test in hours at the end of which the winning version will be sent. Only available if &#x60;abTesting&#x60; flag of the campaign is &#x60;true&#x60;.</param>
         /// <param name="sendAtBestTime">It is true if you have chosen to send your campaign at best time, otherwise it is false.</param>
-        /// <param name="utmCampaignValue">utm parameter associated with campaign.</param>
-        /// <param name="utmSource">source of utm parameter.</param>
-        /// <param name="utmMedium">medium parameter.</param>
-        /// <param name="utmID">utm id.</param>
+        /// <param name="utmCampaignValue">The utm_campaign value applied to the campaign's tracking links. Falls back to your account's global UTM settings when no custom value was set on the campaign, or the campaign name if neither is configured. Only returned when UTM tracking is enabled on the campaign..</param>
+        /// <param name="utmSource">The utm_source value applied to the campaign's tracking links. Falls back to your account's global UTM settings when no custom value was set on the campaign, or the account default (`brevo` or `sendinblue`) if neither is configured. Case is preserved verbatim. Only returned when UTM tracking is enabled on the campaign..</param>
+        /// <param name="utmMedium">The utm_medium value applied to the campaign's tracking links. Falls back to your account's global UTM settings when no custom value was set on the campaign, or the default `email` if neither is configured. Case is preserved verbatim. Only returned when UTM tracking is enabled on the campaign..</param>
+        /// <param name="utmID">Legacy numeric utm_id value applied to the campaign's tracking links. Present only when UTM tracking is enabled on the campaign and the resolved utm_id is numeric (typically the campaign's ID). For customer-supplied non-numeric values (for example `promo_042`), read the string utmId field instead. Kept for backward compatibility..</param>
         /// <param name="testSent">Retrieved the status of test email sending. (true&#x3D;Test email has been sent  false&#x3D;Test email has not been sent) (required).</param>
         /// <param name="header">Header of the campaign (required).</param>
         /// <param name="footer">Footer of the campaign (required).</param>
@@ -389,30 +389,30 @@ namespace brevo_csharp.Model
         public bool? SendAtBestTime { get; set; }
 
         /// <summary>
-        /// utm parameter associated with campaign
+        /// The utm_campaign value applied to the campaign's tracking links. Falls back to your account's global UTM settings when no custom value was set on the campaign, or the campaign name if neither is configured. Only returned when UTM tracking is enabled on the campaign.
         /// </summary>
-        /// <value>utm parameter associated with campaign</value>
+        /// <value>The utm_campaign value applied to the campaign's tracking links. Falls back to your account's global UTM settings when no custom value was set on the campaign, or the campaign name if neither is configured. Only returned when UTM tracking is enabled on the campaign.</value>
         [DataMember(Name="utmCampaignValue", EmitDefaultValue=false)]
         public string UtmCampaignValue { get; set; }
 
         /// <summary>
-        /// source of utm parameter
+        /// The utm_source value applied to the campaign's tracking links. Falls back to your account's global UTM settings when no custom value was set on the campaign, or the account default (`brevo` or `sendinblue`) if neither is configured. Case is preserved verbatim. Only returned when UTM tracking is enabled on the campaign.
         /// </summary>
-        /// <value>source of utm parameter</value>
+        /// <value>The utm_source value applied to the campaign's tracking links. Falls back to your account's global UTM settings when no custom value was set on the campaign, or the account default (`brevo` or `sendinblue`) if neither is configured. Case is preserved verbatim. Only returned when UTM tracking is enabled on the campaign.</value>
         [DataMember(Name="utmSource", EmitDefaultValue=false)]
         public string UtmSource { get; set; }
 
         /// <summary>
-        /// medium parameter
+        /// The utm_medium value applied to the campaign's tracking links. Falls back to your account's global UTM settings when no custom value was set on the campaign, or the default `email` if neither is configured. Case is preserved verbatim. Only returned when UTM tracking is enabled on the campaign.
         /// </summary>
-        /// <value>medium parameter</value>
+        /// <value>The utm_medium value applied to the campaign's tracking links. Falls back to your account's global UTM settings when no custom value was set on the campaign, or the default `email` if neither is configured. Case is preserved verbatim. Only returned when UTM tracking is enabled on the campaign.</value>
         [DataMember(Name="utmMedium", EmitDefaultValue=false)]
         public string UtmMedium { get; set; }
 
         /// <summary>
-        /// utm id
+        /// Legacy numeric utm_id value applied to the campaign's tracking links. Present only when UTM tracking is enabled on the campaign and the resolved utm_id is numeric (typically the campaign's ID). For customer-supplied non-numeric values (for example `promo_042`), read the string utmId field instead. Kept for backward compatibility.
         /// </summary>
-        /// <value>utm id</value>
+        /// <value>Legacy numeric utm_id value applied to the campaign's tracking links. Present only when UTM tracking is enabled on the campaign and the resolved utm_id is numeric (typically the campaign's ID). For customer-supplied non-numeric values (for example `promo_042`), read the string utmId field instead. Kept for backward compatibility.</value>
         [DataMember(Name="utmID", EmitDefaultValue=false)]
         public int? UtmID { get; set; }
 
